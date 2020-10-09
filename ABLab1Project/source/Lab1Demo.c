@@ -16,8 +16,8 @@ void main(void){
     INT8C char_in;                  /* Received character                     */
 
     K65TWR_BootClock();             /* Initialize MCU clocks                  */
-
     BIOOpen(BIO_BIT_RATE_115200);   /* Initialize Serial Port                 */
+    BIOPutStrg("Program is running\n");
     char_in = BIOGetChar();         /* Wait for character to be entered       */
     while(char_in != 'q'){          /* Display message until 'q' is entered   */
         BIOPutStrg("Hello[");
