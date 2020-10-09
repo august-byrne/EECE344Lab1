@@ -17,20 +17,18 @@ void main(void){
 
     K65TWR_BootClock();             /* Initialize MCU clocks                  */
     BIOOpen(BIO_BIT_RATE_115200);   /* Initialize Serial Port                 */
-    BIOPutStrg("Program is running from start\n\r");
+    BIOPutStrg("Program is running from start\n\r");	//Program running notification
     char_in = BIOGetChar();         /* Wait for character to be entered       */
-    while(1){          /* Display message until 'q' is entered   */
-    	if(char_in != 'q'){
+    while(1){
+    	if(char_in != 'q'){          /* Display message if 'q' is not entered   */
 			BIOPutStrg("Hello[");
 			BIOOutDecWord(cur_count,3,BIO_OD_MODE_LZ);
 			BIOPutStrg("]\n\r");
 			cur_count++;                /* Increment counter                      */
-		}else{
+		}else{					//restarts the counter and gives a message when 'q' is entered
 			cur_count = 0;
 			BIOPutStrg("Program is running from restart\n\r");
 		}
         char_in = BIOGetChar();     /* Wait for new character                 */
     }
-
-    //while(1){}                      /* Finished - trap                        */
 }
